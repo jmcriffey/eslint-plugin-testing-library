@@ -1,3 +1,4 @@
+import path from 'path';
 import { getDocsUrl } from '../utils';
 import { ESLintUtils, TSESTree } from '@typescript-eslint/experimental-utils';
 import { isJSXAttribute, isLiteral } from '../node-utils';
@@ -66,7 +67,7 @@ export default ESLintUtils.RuleCreator(getDocsUrl)<Options, MessageIds>({
     const { testIdPattern, testIdAttribute: attr } = options;
 
     function getFileNameData() {
-      const splitPath = getFilename().split('/');
+      const splitPath = getFilename().split(path.sep);
       const fileNameWithExtension = splitPath.pop();
       const parent = splitPath.pop();
       const fileName = fileNameWithExtension.split('.').shift();
